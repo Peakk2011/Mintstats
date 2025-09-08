@@ -1,0 +1,25 @@
+{
+  "name": "mintstats",
+  "version": "1.0.0",
+  "description": "A lightweight, JavaScript library for calculating common statistical metrics.",
+  "type": "module",
+  "main": "./mintstats.js",
+  "module": "./mintstats.js",
+  "exports": {
+    ".": {
+      "import": "./mintstats.js",
+      "types": "./mintstats.d.ts"
+    }
+  },
+  "files": [
+    "mintstats.js",
+    "mintstats.d.ts"
+  ],
+  "keywords": ["statistics", "stats", "math", "mean", "median", "mode", "stdev", "variance", "percentile"],
+  "author": "Your Name <youremail@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/mintstats.git"
+  }
+}
