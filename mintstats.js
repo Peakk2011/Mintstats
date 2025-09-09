@@ -165,27 +165,21 @@ const range = (arr, key) => {
 
 /**
  * @param {(object[]|number[])} arr The array of objects or numbers.
- * @param {string|boolean} [keyOrIsSample] The key for objects, or a boolean to specify sample/population.
- * @param {boolean} [isSample=true] If true, calculates sample variance (n-1), otherwise population variance (n).
+ * @param {object} [options] Configuration options.
+ * @param {string} [options.key] The key for objects.
+ * @param {boolean} [options.isSample=true] If true, calculates sample variance (n-1), otherwise population variance (n).
  * @returns {number} The variance value.
  * @throws {RangeError} If the array has insufficient data for the calculation.
  */
-
-const variance = (arr, keyOrIsSample, isSample = true) => {
-    let key = null;
-    let sample = isSample;
-
-    if (typeof keyOrIsSample === 'string') {
-        key = keyOrIsSample;
-    } else if (typeof keyOrIsSample === 'boolean') {
-        sample = keyOrIsSample;
-    }
-
+const variance = (arr, options = {}) => {
+    const { key = null, isSample = true } = options;
+    
     const nums = extractNumbers(arr, key);
-    const divisor = sample ? nums.length - 1 : nums.length;
-
+    if (nums.length === 0) return 0;
+    
+    const divisor = isSample ? nums.length - 1 : nums.length;
+    
     if (divisor <= 0) {
-        if (nums.length === 0) return 0; 
         throw new RangeError("Sample variance requires at least 2 data points.");
     }
 
@@ -196,15 +190,15 @@ const variance = (arr, keyOrIsSample, isSample = true) => {
 
 /**
  * @param {(object[]|number[])} arr The array of objects or numbers.
- * @param {string|boolean} [keyOrIsSample] The key for objects, or a boolean to specify sample/population.
- * @param {boolean} [isSample=true] If true, calculates sample stdev (n-1), otherwise population stdev (n).
+ * @param {object} [options] Configuration options.
+ * @param {string} [options.key] The key for objects.
+ * @param {boolean} [options.isSample=true] If true, calculates sample stdev (n-1), otherwise population stdev (n).
  * @returns {number} The standard deviation value.
  * @throws {RangeError} If the array has insufficient data for the calculation.
  */
-
-const stdev = (arr, keyOrIsSample, isSample = true) => {
+const stdev = (arr, options = {}) => {
     // This function re-uses the logic from variance, so we just call it.
-    const varianceValue = variance(arr, keyOrIsSample, isSample);
+    const varianceValue = variance(arr, options);
     return toFixedNumber(Math.sqrt(varianceValue));
 };
 
