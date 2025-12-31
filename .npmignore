@@ -1,4 +1,4 @@
-# Ignore benchmark files
-benchmarks/
 # Ignore node_modules if any
 node_modules/
+*.log
+*.test.js

@@ -1,25 +1,43 @@
 {
   "name": "mintstats",
-  "version": "1.0.0",
-  "description": "A lightweight, JavaScript library for calculating common statistical metrics.",
+  "version": "1.1.0",
+  "description": "A lightweight JavaScript library for calculating common statistical metrics.",
   "type": "module",
-  "main": "./mintstats.js",
-  "module": "./mintstats.js",
+  "main": "dist/mintstats.js",
   "exports": {
     ".": {
-      "import": "./mintstats.js",
-      "types": "./mintstats.d.ts"
+      "import": "dist/mintstats.js",
+      "types": "dist/mintstats.d.ts"
     }
   },
   "files": [
-    "mintstats.js",
-    "mintstats.d.ts"
+    "dist"
   ],
-  "keywords": ["statistics", "stats", "math", "mean", "median", "mode", "stdev", "variance", "percentile"],
-  "author": "Your Name <youremail@example.com>",
+  "keywords": [
+    "statistics",
+    "stats",
+    "math",
+    "mean",
+    "median",
+    "mode",
+    "stdev",
+    "variance",
+    "percentile"
+  ],
+  "author": "Peakk <peakk3984@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/mintstats.git"
+    "url": "https://github.com/Peakk2011/mintstats.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepack": "npm run build"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/benchmark": "^2.1.5",
+    "benchmark": "^2.1.4",
+    "typescript": "^5.4.5"
   }
 }
